@@ -1,0 +1,16 @@
+<h1>Shit to do</h1>
+<table class="table">
+  <tbody>
+<%= for task <- @tasks do %>
+    <tr>
+      <td><h2><%= link task.name, to: task_path(@conn, :show, task) %></h2></td>
+
+      <td class="text-right">
+        <%= link "💪", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "You fucking did it!"], class: "btn btn-default btn-lg" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "Add", to: task_path(@conn, :new), class: "btn btn-info btn-lg btn-block" %>
